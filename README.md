@@ -1,4 +1,4 @@
-# grafana_playground
+# Grafana Playground
 Set up Grafana and components via individual Docker Compose files. Also included is some Terraform to help configure Grafana.
 
 The aim of this repository is to allow for easy set up of Grafana and related stack for discovery and learning purposes.
