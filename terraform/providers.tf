@@ -8,10 +8,6 @@ terraform {
 }
 
 provider "grafana" {
-  url = "http://GRAFANA_IP:GRAFANA_PORT"
-  auth = ""
+  url = var.grafana_address
+  auth = var.grafana_token
 }
-
-resource "grafana_folder" "geektechstuff" {
-  title = "geektechstuff folder"
-}    
