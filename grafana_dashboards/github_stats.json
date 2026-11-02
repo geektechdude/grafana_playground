@@ -2,38 +2,24 @@
   "apiVersion": "dashboard.grafana.app/v2",
   "kind": "Dashboard",
   "metadata": {
-    "name": "geektechstuff-github-dashboard",
-    "namespace": "default",
-    "uid": "geektechstuff-github-dashboard",
-    "resourceVersion": "1793207428857998",
-    "generation": 16,
-    "creationTimestamp": "2026-10-19T18:28:42Z",
-    "labels": {
-      "grafana.app/deprecatedInternalID": ""
-    },
-    "annotations": {
-      "grafana.app/createdBy": "user:geektechstuff",
-      "grafana.app/saved-from-ui": "Grafana v13.2.4 (0e79aef9d9)",
-      "grafana.app/updatedBy": "user:geektechstuff",
-      "grafana.app/updatedTimestamp": "2026-10-28T17:10:28Z"
-    }
+    "name": "geektechstuff-github-dashboard"
   },
   "spec": {
     "annotations": [
       {
         "kind": "AnnotationQuery",
         "spec": {
-          "query": {
-            "kind": "DataQuery",
-            "group": "grafana",
-            "version": "v0",
-            "spec": {}
-          },
+          "builtIn": true,
           "enable": true,
           "hide": true,
           "iconColor": "rgba(0, 211, 255, 1)",
           "name": "Annotations & Alerts",
-          "builtIn": true
+          "query": {
+            "group": "grafana",
+            "kind": "DataQuery",
+            "spec": {},
+            "version": "v0"
+          }
         }
       }
     ],
@@ -41,13 +27,9 @@
     "description": "Dashboard to show GitHub stats.",
     "editable": true,
     "elements": {
-      "panel-13": {
+      "panel-1": {
         "kind": "Panel",
         "spec": {
-          "id": 13,
-          "title": "Pull Requests",
-          "description": "",
-          "links": [],
           "data": {
             "kind": "QueryGroup",
             "spec": {
@@ -55,13 +37,13 @@
                 {
                   "kind": "PanelQuery",
                   "spec": {
+                    "hidden": false,
                     "query": {
-                      "kind": "DataQuery",
-                      "group": "grafana-github-datasource",
-                      "version": "v0",
                       "datasource": {
                         "name": "$datasource"
                       },
+                      "group": "grafana-github-datasource",
+                      "kind": "DataQuery",
                       "spec": {
                         "options": {
                           "timeField": 1
@@ -69,17 +51,18 @@
                         "owner": "$organization",
                         "queryType": "Pull_Requests",
                         "repository": "$repository"
-                      }
+                      },
+                      "version": "v0"
                     },
-                    "refId": "A",
-                    "hidden": false
+                    "refId": "A"
                   }
                 }
               ],
+              "queryOptions": {},
               "transformations": [
                 {
-                  "kind": "Transformation",
                   "group": "organize",
+                  "kind": "Transformation",
                   "spec": {
                     "options": {
                       "excludeByName": {
@@ -94,35 +77,19 @@
                     }
                   }
                 }
-              ],
-              "queryOptions": {}
+              ]
             }
           },
+          "description": "",
+          "id": 1,
+          "links": [],
+          "title": "Pull Requests",
           "vizConfig": {
-            "kind": "VizConfig",
             "group": "table",
-            "version": "13.2.4",
+            "kind": "VizConfig",
             "spec": {
-              "options": {
-                "cellHeight": "sm",
-                "showHeader": true,
-                "sortBy": []
-              },
               "fieldConfig": {
                 "defaults": {
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "value": 0,
-                        "color": "green"
-                      },
-                      {
-                        "value": 80,
-                        "color": "red"
-                      }
-                    ]
-                  },
                   "custom": {
                     "align": "auto",
                     "cellOptions": {
@@ -133,6 +100,19 @@
                       "reducers": []
                     },
                     "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
                   }
                 },
                 "overrides": [
@@ -161,18 +141,20 @@
                     ]
                   }
                 ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true,
+                "sortBy": []
               }
-            }
+            },
+            "version": "13.2.4"
           }
         }
       },
-      "panel-17": {
+      "panel-2": {
         "kind": "Panel",
         "spec": {
-          "id": 17,
-          "title": "Contributors",
-          "description": "",
-          "links": [],
           "data": {
             "kind": "QueryGroup",
             "spec": {
@@ -180,13 +162,13 @@
                 {
                   "kind": "PanelQuery",
                   "spec": {
+                    "hidden": false,
                     "query": {
-                      "kind": "DataQuery",
-                      "group": "grafana-github-datasource",
-                      "version": "v0",
                       "datasource": {
                         "name": "$datasource"
                       },
+                      "group": "grafana-github-datasource",
+                      "kind": "DataQuery",
                       "spec": {
                         "options": {
                           "query": ""
@@ -194,17 +176,18 @@
                         "owner": "$organization",
                         "queryType": "Contributors",
                         "repository": "$repository"
-                      }
+                      },
+                      "version": "v0"
                     },
-                    "refId": "A",
-                    "hidden": false
+                    "refId": "A"
                   }
                 }
               ],
+              "queryOptions": {},
               "transformations": [
                 {
-                  "kind": "Transformation",
                   "group": "filterFieldsByName",
+                  "kind": "Transformation",
                   "spec": {
                     "options": {
                       "include": {
@@ -216,35 +199,19 @@
                     }
                   }
                 }
-              ],
-              "queryOptions": {}
+              ]
             }
           },
+          "description": "",
+          "id": 2,
+          "links": [],
+          "title": "Contributors",
           "vizConfig": {
-            "kind": "VizConfig",
             "group": "table",
-            "version": "13.2.4",
+            "kind": "VizConfig",
             "spec": {
-              "options": {
-                "cellHeight": "sm",
-                "showHeader": true,
-                "sortBy": []
-              },
               "fieldConfig": {
                 "defaults": {
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "value": 0,
-                        "color": "green"
-                      },
-                      {
-                        "value": 80,
-                        "color": "red"
-                      }
-                    ]
-                  },
                   "custom": {
                     "align": "auto",
                     "cellOptions": {
@@ -255,6 +222,19 @@
                       "reducers": []
                     },
                     "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
                   }
                 },
                 "overrides": [
@@ -283,18 +263,20 @@
                     ]
                   }
                 ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true,
+                "sortBy": []
               }
-            }
+            },
+            "version": "13.2.4"
           }
         }
       },
-      "panel-2": {
+      "panel-3": {
         "kind": "Panel",
         "spec": {
-          "id": 2,
-          "title": "Commits",
-          "description": "",
-          "links": [],
           "data": {
             "kind": "QueryGroup",
             "spec": {
@@ -302,13 +284,13 @@
                 {
                   "kind": "PanelQuery",
                   "spec": {
+                    "hidden": false,
                     "query": {
-                      "kind": "DataQuery",
-                      "group": "grafana-github-datasource",
-                      "version": "v0",
                       "datasource": {
                         "name": "$datasource"
                       },
+                      "group": "grafana-github-datasource",
+                      "kind": "DataQuery",
                       "spec": {
                         "options": {
                           "gitRef": "$branch"
@@ -316,17 +298,18 @@
                         "owner": "$organization",
                         "queryType": "Commits",
                         "repository": "$repository"
-                      }
+                      },
+                      "version": "v0"
                     },
-                    "refId": "A",
-                    "hidden": false
+                    "refId": "A"
                   }
                 }
               ],
+              "queryOptions": {},
               "transformations": [
                 {
-                  "kind": "Transformation",
                   "group": "filterFieldsByName",
+                  "kind": "Transformation",
                   "spec": {
                     "options": {
                       "include": {
@@ -340,40 +323,19 @@
                     }
                   }
                 }
-              ],
-              "queryOptions": {}
+              ]
             }
           },
+          "description": "",
+          "id": 3,
+          "links": [],
+          "title": "Commits",
           "vizConfig": {
-            "kind": "VizConfig",
             "group": "table",
-            "version": "13.2.4",
+            "kind": "VizConfig",
             "spec": {
-              "options": {
-                "cellHeight": "sm",
-                "showHeader": true,
-                "sortBy": [
-                  {
-                    "desc": false,
-                    "displayName": "author_login"
-                  }
-                ]
-              },
               "fieldConfig": {
                 "defaults": {
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "value": 0,
-                        "color": "green"
-                      },
-                      {
-                        "value": 80,
-                        "color": "red"
-                      }
-                    ]
-                  },
                   "custom": {
                     "align": "auto",
                     "cellOptions": {
@@ -386,6 +348,19 @@
                     "inspect": false,
                     "wrapHeaderText": false,
                     "wrapText": true
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
                   }
                 },
                 "overrides": [
@@ -414,18 +389,25 @@
                     ]
                   }
                 ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": false,
+                    "displayName": "author_login"
+                  }
+                ]
               }
-            }
+            },
+            "version": "13.2.4"
           }
         }
       },
-      "panel-29": {
+      "panel-4": {
         "kind": "Panel",
         "spec": {
-          "id": 29,
-          "title": "Pull Requests Created",
-          "description": "",
-          "links": [],
           "data": {
             "kind": "QueryGroup",
             "spec": {
@@ -433,13 +415,13 @@
                 {
                   "kind": "PanelQuery",
                   "spec": {
+                    "hidden": false,
                     "query": {
-                      "kind": "DataQuery",
-                      "group": "grafana-github-datasource",
-                      "version": "v0",
                       "datasource": {
                         "name": "$datasource"
                       },
+                      "group": "grafana-github-datasource",
+                      "kind": "DataQuery",
                       "spec": {
                         "options": {
                           "query": "",
@@ -448,17 +430,18 @@
                         "owner": "$organization",
                         "queryType": "Pull_Requests",
                         "repository": "$repository"
-                      }
+                      },
+                      "version": "v0"
                     },
-                    "refId": "A",
-                    "hidden": false
+                    "refId": "A"
                   }
                 }
               ],
+              "queryOptions": {},
               "transformations": [
                 {
-                  "kind": "Transformation",
                   "group": "reduce",
+                  "kind": "Transformation",
                   "spec": {
                     "options": {
                       "reducers": [
@@ -467,15 +450,31 @@
                     }
                   }
                 }
-              ],
-              "queryOptions": {}
+              ]
             }
           },
+          "description": "",
+          "id": 4,
+          "links": [],
+          "title": "Pull Requests Created",
           "vizConfig": {
-            "kind": "VizConfig",
             "group": "stat",
-            "version": "13.2.4",
+            "kind": "VizConfig",
             "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
               "options": {
                 "colorMode": "value",
                 "graphMode": "area",
@@ -493,32 +492,15 @@
                 "text": {},
                 "textMode": "auto",
                 "wideLayout": true
-              },
-              "fieldConfig": {
-                "defaults": {
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "value": 0,
-                        "color": "green"
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
               }
-            }
+            },
+            "version": "13.2.4"
           }
         }
       },
-      "panel-32": {
+      "panel-5": {
         "kind": "Panel",
         "spec": {
-          "id": 32,
-          "title": "Active Pull Requests",
-          "description": "",
-          "links": [],
           "data": {
             "kind": "QueryGroup",
             "spec": {
@@ -526,13 +508,13 @@
                 {
                   "kind": "PanelQuery",
                   "spec": {
+                    "hidden": false,
                     "query": {
-                      "kind": "DataQuery",
-                      "group": "grafana-github-datasource",
-                      "version": "v0",
                       "datasource": {
                         "name": "$datasource"
                       },
+                      "group": "grafana-github-datasource",
+                      "kind": "DataQuery",
                       "spec": {
                         "options": {
                           "query": "is:open",
@@ -541,17 +523,18 @@
                         "owner": "$organization",
                         "queryType": "Pull_Requests",
                         "repository": "$repository"
-                      }
+                      },
+                      "version": "v0"
                     },
-                    "refId": "A",
-                    "hidden": false
+                    "refId": "A"
                   }
                 }
               ],
+              "queryOptions": {},
               "transformations": [
                 {
-                  "kind": "Transformation",
                   "group": "reduce",
+                  "kind": "Transformation",
                   "spec": {
                     "options": {
                       "reducers": [
@@ -560,15 +543,39 @@
                     }
                   }
                 }
-              ],
-              "queryOptions": {}
+              ]
             }
           },
+          "description": "",
+          "id": 5,
+          "links": [],
+          "title": "Active Pull Requests",
           "vizConfig": {
-            "kind": "VizConfig",
             "group": "stat",
-            "version": "13.2.4",
+            "kind": "VizConfig",
             "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "yellow",
+                        "value": 30
+                      },
+                      {
+                        "color": "red",
+                        "value": 90
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
               "options": {
                 "colorMode": "value",
                 "graphMode": "area",
@@ -586,40 +593,15 @@
                 "text": {},
                 "textMode": "auto",
                 "wideLayout": true
-              },
-              "fieldConfig": {
-                "defaults": {
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "value": 0,
-                        "color": "green"
-                      },
-                      {
-                        "value": 30,
-                        "color": "yellow"
-                      },
-                      {
-                        "value": 90,
-                        "color": "red"
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
               }
-            }
+            },
+            "version": "13.2.4"
           }
         }
       },
       "panel-6": {
         "kind": "Panel",
         "spec": {
-          "id": 6,
-          "title": "Commits",
-          "description": "",
-          "links": [],
           "data": {
             "kind": "QueryGroup",
             "spec": {
@@ -627,13 +609,13 @@
                 {
                   "kind": "PanelQuery",
                   "spec": {
+                    "hidden": false,
                     "query": {
-                      "kind": "DataQuery",
-                      "group": "grafana-github-datasource",
-                      "version": "v0",
                       "datasource": {
                         "name": "$datasource"
                       },
+                      "group": "grafana-github-datasource",
+                      "kind": "DataQuery",
                       "spec": {
                         "options": {
                           "gitRef": "$branch"
@@ -641,17 +623,18 @@
                         "owner": "$organization",
                         "queryType": "Commits",
                         "repository": "$repository"
-                      }
+                      },
+                      "version": "v0"
                     },
-                    "refId": "A",
-                    "hidden": false
+                    "refId": "A"
                   }
                 }
               ],
+              "queryOptions": {},
               "transformations": [
                 {
-                  "kind": "Transformation",
                   "group": "reduce",
+                  "kind": "Transformation",
                   "spec": {
                     "options": {
                       "reducers": [
@@ -660,15 +643,35 @@
                     }
                   }
                 }
-              ],
-              "queryOptions": {}
+              ]
             }
           },
+          "description": "",
+          "id": 6,
+          "links": [],
+          "title": "Commits",
           "vizConfig": {
-            "kind": "VizConfig",
             "group": "stat",
-            "version": "13.2.4",
+            "kind": "VizConfig",
             "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
               "options": {
                 "colorMode": "value",
                 "graphMode": "area",
@@ -686,26 +689,9 @@
                 "text": {},
                 "textMode": "auto",
                 "wideLayout": true
-              },
-              "fieldConfig": {
-                "defaults": {
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "value": 0,
-                        "color": "green"
-                      },
-                      {
-                        "value": 80,
-                        "color": "red"
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
               }
-            }
+            },
+            "version": "13.2.4"
           }
         }
       }
@@ -717,10 +703,9 @@
           {
             "kind": "RowsLayoutRow",
             "spec": {
-              "title": "Default",
               "collapse": false,
-              "hideHeader": true,
               "fillScreen": true,
+              "hideHeader": true,
               "layout": {
                 "kind": "GridLayout",
                 "spec": {
@@ -728,84 +713,85 @@
                     {
                       "kind": "GridLayoutItem",
                       "spec": {
-                        "x": 0,
-                        "y": 0,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-4"
+                        },
+                        "height": 5,
                         "width": 4,
-                        "height": 4,
+                        "x": 0,
+                        "y": 0
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-5"
+                        },
+                        "height": 5,
+                        "width": 4,
+                        "x": 4,
+                        "y": 0
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
                         "element": {
                           "kind": "ElementReference",
                           "name": "panel-6"
-                        }
-                      }
-                    },
-                    {
-                      "kind": "GridLayoutItem",
-                      "spec": {
-                        "x": 4,
-                        "y": 0,
+                        },
+                        "height": 5,
                         "width": 4,
-                        "height": 4,
-                        "element": {
-                          "kind": "ElementReference",
-                          "name": "panel-32"
-                        }
-                      }
-                    },
-                    {
-                      "kind": "GridLayoutItem",
-                      "spec": {
                         "x": 8,
-                        "y": 0,
-                        "width": 4,
-                        "height": 4,
-                        "element": {
-                          "kind": "ElementReference",
-                          "name": "panel-29"
-                        }
+                        "y": 0
                       }
                     },
                     {
                       "kind": "GridLayoutItem",
                       "spec": {
-                        "x": 12,
-                        "y": 0,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-3"
+                        },
+                        "height": 16,
                         "width": 12,
-                        "height": 22,
+                        "x": 12,
+                        "y": 0
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
                         "element": {
                           "kind": "ElementReference",
                           "name": "panel-2"
-                        }
+                        },
+                        "height": 4,
+                        "width": 12,
+                        "x": 0,
+                        "y": 5
                       }
                     },
                     {
                       "kind": "GridLayoutItem",
                       "spec": {
-                        "x": 0,
-                        "y": 4,
-                        "width": 12,
-                        "height": 9,
                         "element": {
                           "kind": "ElementReference",
-                          "name": "panel-13"
-                        }
-                      }
-                    },
-                    {
-                      "kind": "GridLayoutItem",
-                      "spec": {
-                        "x": 0,
-                        "y": 13,
+                          "name": "panel-1"
+                        },
+                        "height": 7,
                         "width": 12,
-                        "height": 5,
-                        "element": {
-                          "kind": "ElementReference",
-                          "name": "panel-17"
-                        }
+                        "x": 0,
+                        "y": 9
                       }
                     }
                   ]
                 }
-              }
+              },
+              "title": "Default"
             }
           }
         ]
@@ -816,9 +802,6 @@
     "preload": false,
     "tags": [],
     "timeSettings": {
-      "timezone": "browser",
-      "from": "now-1h",
-      "to": "now",
       "autoRefresh": "",
       "autoRefreshIntervals": [
         "5s",
@@ -832,96 +815,99 @@
         "2h",
         "1d"
       ],
+      "fiscalYearStartMonth": 0,
+      "from": "now-7d",
       "hideTimepicker": false,
-      "fiscalYearStartMonth": 0
+      "timezone": "browser",
+      "to": "now"
     },
     "title": "GitHub Stats",
     "variables": [
       {
         "kind": "DatasourceVariable",
         "spec": {
-          "name": "datasource",
-          "pluginId": "grafana-github-datasource",
-          "refresh": "onDashboardLoad",
-          "regex": "",
+          "allowCustomValue": true,
           "current": {
             "text": "github-geektechstuff",
             "value": "eg2l4berq677kd"
           },
-          "options": [],
-          "multi": false,
-          "includeAll": false,
           "hide": "dontHide",
-          "skipUrlSync": false,
-          "allowCustomValue": true
+          "includeAll": false,
+          "multi": false,
+          "name": "datasource",
+          "options": [],
+          "pluginId": "grafana-github-datasource",
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "skipUrlSync": false
         }
       },
       {
         "kind": "TextVariable",
         "spec": {
-          "name": "organization",
           "current": {
             "text": "geektechdude",
             "value": "geektechdude"
           },
-          "query": "geektechdude",
-          "label": "Organization",
           "hide": "dontHide",
+          "label": "Organization",
+          "name": "organization",
+          "query": "geektechdude",
           "skipUrlSync": false
         }
       },
       {
         "kind": "QueryVariable",
         "spec": {
-          "name": "repository",
+          "allowCustomValue": true,
           "current": {
             "text": "grafana_playground",
             "value": "grafana_playground"
           },
-          "label": "Repository",
+          "definition": "GitHub - Repositories",
           "hide": "dontHide",
-          "refresh": "onDashboardLoad",
-          "skipUrlSync": false,
+          "includeAll": false,
+          "label": "Repository",
+          "multi": false,
+          "name": "repository",
+          "options": [],
           "query": {
-            "kind": "DataQuery",
-            "group": "grafana-github-datasource",
-            "version": "v0",
             "datasource": {
               "name": "eg2l4berq677kd"
             },
+            "group": "grafana-github-datasource",
+            "kind": "DataQuery",
             "spec": {
               "field": "name",
               "owner": "$organization",
               "queryType": "Repositories",
               "repository": ""
-            }
+            },
+            "version": "v0"
           },
+          "refresh": "onDashboardLoad",
           "regex": "",
           "regexApplyTo": "value",
-          "sort": "disabled",
-          "definition": "GitHub - Repositories",
-          "options": [],
-          "multi": false,
-          "includeAll": false,
-          "allowCustomValue": true
+          "skipUrlSync": false,
+          "sort": "disabled"
         }
       },
       {
         "kind": "CustomVariable",
         "spec": {
-          "name": "branch",
-          "query": "main",
+          "allowCustomValue": true,
           "current": {
             "text": "main",
             "value": "main"
           },
-          "options": [],
-          "multi": false,
+          "hide": "dontHide",
           "includeAll": false,
           "label": "Branch",
-          "hide": "dontHide",
+          "multi": false,
+          "name": "branch",
+          "options": [],
+          "query": "main",
           "skipUrlSync": false,
-          "allowCustomValue": true,
           "valuesFormat": "csv"
         }
       }
