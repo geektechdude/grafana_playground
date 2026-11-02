@@ -4,6 +4,6 @@ resource "grafana_data_source" "github" {
 
   json_data_encoded = jsonencode({
     "selectedAuthType" = "personal-access-token"
-    "accessToken" = var.github_token
+    "accessToken"      = var.github_token
   })
 }
