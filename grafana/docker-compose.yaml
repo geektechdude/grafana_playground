@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     environment:
       - GF_SERVER_ROOT_URL=http://grafana.local
+      - GF_PLUGINS_PREINSTALL=grafana-github-datasource
     ports:
       - '3000:3000'
     volumes:
