@@ -1026,9 +1026,7 @@
     "links": [],
     "liveNow": false,
     "preload": false,
-    "tags": [
-	"TERRAFORM_MANAGED",
-	"TEST"],
+    "tags": [],
     "timeSettings": {
       "timezone": "browser",
       "from": "now-7d",

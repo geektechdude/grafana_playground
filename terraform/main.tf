@@ -4,6 +4,8 @@ resource "grafana_folder" "geektechstuff" {
 
 resource "grafana_dashboard" "geektechstuff_github" {
   folder      = grafana_folder.geektechstuff.id
-  config_json = file("../grafana_dashboards/github_stats.json")
+  for_each = fileset("../grafana_dashboards/", "*.json")  
+  config_json = jsonencode(merge(jsondecode(file("../grafana_dashboards/${each.key}")),
+	{tags = ["TERRAFORM-MANAGED"]} ))
   overwrite   = true
 }
