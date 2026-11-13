@@ -9,3 +9,16 @@ resource "grafana_dashboard" "geektechstuff_github" {
 	{tags = ["TERRAFORM-MANAGED"]} ))
   overwrite   = true
 }
+
+resource "grafana_service_account" "python_sa" {
+  name = "python-service-account"
+  role = "Viewer"
+}
+
+resource "grafana_service_account_rotating_token" "python_token" {
+  name_prefix = "python_token"
+  service_account_id = grafana_service_account.python_sa.id
+  seconds_to_live = 604800 
+  early_rotation_window_seconds = 302400
+}
+
