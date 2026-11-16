@@ -5,3 +5,7 @@ terraform.tfstate
 *.tfstate
 *.tfstate.backup
 terraform/live.tfvars
+python/.env
+.env
+python/venv
+
