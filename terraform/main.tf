@@ -43,3 +43,34 @@ resource "grafana_service_account_rotating_token" "python_token" {
   early_rotation_window_seconds = 302400
 }
 
+data "grafana_dashboards" "all" {
+  depends_on = [
+    grafana_dashboard.dashboardsv1,
+    grafana_apps_dashboard_dashboard_v2.dashboardsv2]
+}
+
+
+resource "grafana_dashboard_permission" "global_permissions" {
+  for_each = toset([for d in data.grafana_dashboards.all.dashboards : d.uid])
+  dashboard_uid = each.value
+
+  permissions {
+    role       = "Editor"
+    permission = "Edit"
+  }
+  permissions {
+    role = "Viewer"
+    permission = "View"
+  }
+  permissions {
+    role = "Admin"
+    permission = "Admin"
+  }
+  permissions {
+    user_id = grafana_service_account.python_sa.id
+    permission = "View"
+  }
+}
+
+
+
